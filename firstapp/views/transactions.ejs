@@ -11,11 +11,17 @@
         
       <h1> Add a New Transaction </h1>
       <form method="post" action="tran">
-          new item: <input type="text" name="description" placeholder="description"><br>
-          new item: <input type="text" name="category" placeholder="category"><br>
-          new item: <input type="number" name="amount" placeholder="amount"><br>
-          new item: <input type="date" name="date" placeholder="mm/dd/yyyy"><br>
+         <input type="text" name="description" placeholder="description"><br>
+         <input type="text" name="category" placeholder="category"><br>
+         <input type="number" name="amount" placeholder="amount"><br>
+         <input type="date" name="date"><br>
           <input type="submit" value="store">
-      </form>
-
-  </div>
+      </div>
+      <div class="col">
+        <h2> Summary of Site Usage</h2>
+        <p>
+          <a  class="btn btn-lg btn-primary"
+              href="/todo/byUser">Show todo counts for all users</a></p>
+      </div> 
+    </div>
+</div>
