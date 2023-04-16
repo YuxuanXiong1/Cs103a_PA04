@@ -5,9 +5,10 @@ const Schema = mongoose.Schema;
 const ObjectId = mongoose.Schema.Types.ObjectId;
 
 var TranItemSchema = Schema( {
-  item: String,
-  completed: Boolean,
-  createdAt: Date,
+  description: String,
+  category: String,
+  aomunt: Number,
+  date: Date,
   userId: ObjectId
 } );
 

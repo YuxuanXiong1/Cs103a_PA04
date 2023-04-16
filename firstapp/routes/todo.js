@@ -48,7 +48,7 @@ router.get('/todo/remove/:itemId',
   async (req, res, next) => {
       console.log("inside /todo/remove/:itemId")
       await ToDoItem.deleteOne({_id:req.params.itemId});
-      res.redirect('/toDo')
+      res.redirect('/todo')
 });
 
 
