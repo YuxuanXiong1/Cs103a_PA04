@@ -5,7 +5,7 @@
       <% items.forEach(item => { %>
            <a href="/tran/remove/<%=item._id %>">X</a>
            ::
-           <%= item.item %>
+           <%= item.description %>
           <br>
       <% }) %>
         
@@ -14,14 +14,8 @@
          <input type="text" name="description" placeholder="description"><br>
          <input type="text" name="category" placeholder="category"><br>
          <input type="number" name="amount" placeholder="amount"><br>
-         <input type="date" name="date"><br>
+         <input type="date" name="date" placeholder="yyymm/dd"><br>
           <input type="submit" value="store">
-      </div>
-      <div class="col">
-        <h2> Summary of Site Usage</h2>
-        <p>
-          <a  class="btn btn-lg btn-primary"
-              href="/todo/byUser">Show todo counts for all users</a></p>
-      </div> 
-    </div>
-</div>
+      </form>
+
+  </div>

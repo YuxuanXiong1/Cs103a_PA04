@@ -30,11 +30,11 @@ router.get('/tran/',
 
 
 /* add the value in the body to the list associated to the key */
-router.post('/tran',
+router.post('/tran',  
   isLoggedIn,
   async (req, res, next) => {
       const tran = new TranItem(
-        {item:req.body.item,
+        {description:req.body.description,
          createdAt: new Date(),
          complete: false,
          userId: req.user._id
