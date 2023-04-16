@@ -6,6 +6,7 @@ const logger = require('morgan');
 const layouts = require("express-ejs-layouts");
 const pw_auth_router = require('./routes/pwauth')
 const toDoRouter = require('./routes/todo');
+const tranRouter = require('./routes/tran');
 
 const User = require('./models/User');
 
@@ -103,6 +104,8 @@ app.get('/about',
     res.render('about');
   }
 )
+
+app.use(tranRouter);
 
 app.use(toDoRouter);
 
