@@ -3,7 +3,7 @@
 */
 const express = require('express');
 const router = express.Router();
-const ToDoItem = require('../models/ToDoItem')
+const TranItem = require('../models/TranItem')
 
 
 /*
@@ -21,34 +21,34 @@ isLoggedIn = (req,res,next) => {
 }
 
 // get the value associated to the key
-router.get('/todo/',
+router.get('/tran/',
   isLoggedIn,
   async (req, res, next) => {
-      res.locals.items = await ToDoItem.find({userId:req.user._id})
-      res.render('toDoList');
+      res.locals.items = await TranItem.find({userId:req.user._id})
+      res.render('transactions');
 });
 
 
 /* add the value in the body to the list associated to the key */
-router.post('/todo',
+router.post('/tran',
   isLoggedIn,
   async (req, res, next) => {
-      const todo = new ToDoItem(
+      const tran = new TranItem(
         {item:req.body.item,
          createdAt: new Date(),
          complete: false,
          userId: req.user._id
         })
-      await todo.save();
-      res.redirect('/todo')
+      await tran.save();
+      res.redirect('/tran')
 });
 
-router.get('/todo/remove/:itemId',
+router.get('/tran/remove/:itemId',
   isLoggedIn,
   async (req, res, next) => {
-      console.log("inside /todo/remove/:itemId")
-      await ToDoItem.deleteOne({_id:req.params.itemId});
-      res.redirect('/toDo')
+      console.log("inside /tran/remove/:itemId")
+      await TranItem.deleteOne({_id:req.params.itemId});
+      res.redirect('/tran')
 });
 
 

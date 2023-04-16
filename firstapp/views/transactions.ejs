@@ -3,13 +3,13 @@
     <p> Here is your list of things to do! </p>
 
       <% items.forEach(item => { %>
-           <a href="/todo/remove/<%=item._id %>">X</a>
+           <a href="/tran/remove/<%=item._id %>">X</a>
            ::
            <%= item.item %>
           <br>
       <% }) %>
 
-      <form method="post" action="todo">
+      <form method="post" action="tran">
           new item: <input type="text" name="item"><br>
           <input type="submit" value="store">
       </form>
