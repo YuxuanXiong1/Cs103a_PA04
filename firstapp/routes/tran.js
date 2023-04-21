@@ -34,10 +34,10 @@ router.post('/tran',
   isLoggedIn,
   async (req, res, next) => {
       const tran = new TranItem(
-        {description:req.body.description,
-          category:req.body.category,
-          shu_liang:req.body.shu_liang,
-          ri_qi:req.body.ri_qi,
+        {description: req.body.description,
+          category: req.body.category,
+          shu_liang: req.body.shu_liang,
+          ri_qi: req.body.ri_qi,
           userId: req.user._id
         })
       await tran.save();

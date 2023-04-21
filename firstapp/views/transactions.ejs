@@ -1,25 +1,38 @@
 <div class="jumbotron">
-    <h1> Transactions for <%= user.googlename %> </h1>
-    <p> Here is your list of things to do! </p>
-
-      <% items.forEach(item => { %>
-           <a href="/tran/remove/<%=item._id %>">X</a>
-           :
-           <%= item.description %>
-           <%= item.category %>
-           <%= item.shu_liang %>
-           <%= item.ri_qi %>
-
-          <br>
-      <% }) %>
-        
-      <h1> Add a New Transaction </h1>
-      <form method="post" action="tran">
-         <input type="text" name="description" placeholder="description"><br>
-         <input type="text" name="category" placeholder="category"><br>
-         <input type="text" name="shu_liang" placeholder="amount"><br>
-         <input type="text" name="ri_qi" placeholder="yyyy/mm/dd"><br>
-         <input type="submit" value="store">
-      </form>
-
+    <h1>Transactions for <%= user.googlename %></h1>
+    <p>Here is your list of things to do!</p>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Category</th>
+          <th>Amount</th>
+          <th>Date</th>
+          <th>Edit</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% items.forEach(item => { %>
+          <tr>
+            <td><%= item.description %></td>
+            <td><%= item.category %></td>
+            <td><%= item.shu_liang %></td>
+            <td><%= item.ri_qi %></td>
+            <td><a href="/tran/edit/<%= item._id %>">✏️</a></td>
+            <td><a href="/tran/remove/<%= item._id %>">🗑️</a></td>
+          </tr>
+        <% }) %>
+      </tbody>
+    </table>
+  
+    <h1>Add a New Transaction</h1>
+    <form method="post" action="tran">
+      <input type="text" name="description" placeholder="description"><br>
+      <input type="text" name="category" placeholder="category"><br>
+      <input type="text" name="shu_liang" placeholder="amount"><br>
+      <input type="text" name="ri_qi" placeholder="yyyy/mm/dd"><br>
+      <input type="submit" value="store">
+    </form>
   </div>
