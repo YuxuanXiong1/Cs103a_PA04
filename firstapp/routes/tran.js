@@ -92,6 +92,7 @@ router.post('/tran/updateTranItem',
 router.get('/tran/byCategory',
   isLoggedIn,
   async (req, res, next) => {
+    try {
       let results = await TranItem.aggregate([
         {
           $group: {
@@ -104,9 +105,18 @@ router.get('/tran/byCategory',
         }
       ]);
       
-
+      results = 
+      await User.populate(results,
+              {path:'_id',
+              select:['category']})
 
       res.render('summarizeByCategory', { results });
+
+
+    } catch (error) {
+      next(error);
+    }
+
 
   }
 );
