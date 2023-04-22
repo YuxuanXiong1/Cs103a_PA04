@@ -105,6 +105,20 @@ app.get('/about',
   }
 )
 
+app.get('/transactions', function(req, res) {
+  // retrieve items from database
+  db.find({}, function(err, items) {
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return;
+    }
+
+    // render the EJS template and pass the items and req object as parameters
+    res.render('transactions', { items: items, req: req });
+  });
+});
+
 app.use(tranRouter);
 
 app.use(toDoRouter);
