@@ -26,7 +26,12 @@ router.get('/tran/',
   async (req, res, next) => {
     if (req.query.sort) {
       const sortKey = req.query.sort;
-      res.locals.items = await TranItem.find({userId:req.user._id}).sort({category:1});
+      if (req.query.sort == 'description'){
+        res.locals.items = await TranItem.find({userId:req.user._id}).sort({description:1});
+      }
+      if (req.query.sort == 'category'){
+        res.locals.items = await TranItem.find({userId:req.user._id}).sort({category:1});
+      }
     } else {
       res.locals.items = await TranItem.find({userId:req.user._id})
     }
