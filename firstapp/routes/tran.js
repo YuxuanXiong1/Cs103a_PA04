@@ -28,9 +28,12 @@ router.get('/tran/',
       const sortKey = req.query.sort;
       if (req.query.sort == 'description'){
         res.locals.items = await TranItem.find({userId:req.user._id}).sort({description:1});
-      }
-      if (req.query.sort == 'category'){
+      } else if (req.query.sort == 'category'){
         res.locals.items = await TranItem.find({userId:req.user._id}).sort({category:1});
+      } else if (req.query.sort == 'amount'){
+        res.locals.items = await TranItem.find({userId:req.user._id}).sort({shu_liang:1});
+      } else if (req.query.sort == 'date'){
+        res.locals.items = await TranItem.find({userId:req.user._id}).sort({ri_qi:1});
       }
     } else {
       res.locals.items = await TranItem.find({userId:req.user._id})
