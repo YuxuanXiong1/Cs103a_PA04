@@ -81,11 +81,11 @@ router.get('/tran/edit/:itemId',
 router.post('/tran/updateTranItem',
   isLoggedIn,
   async (req, res, next) => {
-      const {itemId,item,priority} = req.body;  
+      const {itemId,category,description,shu_liang,ri_qi} = req.body;  
       //console.log("inside /todo/complete/:itemId");
       await TranItem.findOneAndUpdate(
         {_id:itemId},
-        {$set: {item,priority}} );
+        {$set: {category,description,shu_liang,ri_qi}} );
       res.redirect('/tran')
 });
 
