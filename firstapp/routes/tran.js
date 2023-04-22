@@ -48,10 +48,10 @@ router.post('/tran',
   async (req, res, next) => {
       const tran = new TranItem(
         {description: req.body.description,
-          category: req.body.category,
-          shu_liang: req.body.shu_liang,
-          ri_qi: req.body.ri_qi,
-          userId: req.user._id
+         category: req.body.category,
+         shu_liang: req.body.shu_liang,
+         ri_qi: req.body.ri_qi,
+         userId: req.user._id
         })
       await tran.save();
       res.redirect('/tran')
@@ -91,8 +91,7 @@ router.post('/tran/updateTranItem',
 router.get('/tran/byCategory',
   isLoggedIn,
   async (req, res, next) => {
-    try {
-      const results = await TranItem.aggregate([
+      let results = await TranItem.aggregate([
         {
           $group: {
             _id: "$category",
@@ -106,9 +105,7 @@ router.get('/tran/byCategory',
       
       
       res.render('summarizeByCategory', { results });
-    } catch (error) {
-      next(error);
-    }
+
   }
 );
 
