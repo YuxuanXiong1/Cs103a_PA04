@@ -80,6 +80,10 @@ router.get('/tran/byCategory',
           $sort: { totalShuLiang: -1 }
         }
       ]);
+      results = 
+           await User.populate(results,
+                   {path:'_id',
+                   select:['category']})
       
       res.render('summarizeByCategory', { results });
     } catch (error) {
