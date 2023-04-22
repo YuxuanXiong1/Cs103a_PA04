@@ -5,7 +5,6 @@
   <form method="get" action="/tran">
     <label for="sort">Sort By:</label>
     <select name="sort" id="sort">
-      <option value="none">None</option>
       <option value="description">Description</option>
       <option value="category">Category</option>
       <option value="amount">Amount</option>
@@ -43,7 +42,7 @@
   <form method="post" action="tran">
     <input type="text" name="description" placeholder="description"><br>
     <input type="text" name="category" placeholder="category"><br>
-    <input type="text" name="shu_liang" placeholder="amount"><br>
+    <input type="number" name="shu_liang" placeholder="amount"><br>
     <input type="text" name="ri_qi" placeholder="yyyy/mm/dd"><br>
     <input type="submit" value="store">
   </form>

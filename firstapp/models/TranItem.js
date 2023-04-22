@@ -7,7 +7,7 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 var TranItemSchema = Schema( {
   description: String,
   category: String,
-  shu_liang: String,
+  shu_liang: Number,
   ri_qi: String,
   userId: ObjectId
 } );
