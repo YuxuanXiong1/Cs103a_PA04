@@ -4,6 +4,7 @@
 const express = require('express');
 const router = express.Router();
 const TranItem = require('../models/TranItem')
+const User = require('../models/User')
 
 
 /*
@@ -103,7 +104,11 @@ router.get('/tran/byCategory',
         }
       ]);
       
-      
+      results = 
+      await User.populate(results,
+              {path:'_id',
+              select:['category']})
+
       res.render('summarizeByCategory', { results });
 
   }
