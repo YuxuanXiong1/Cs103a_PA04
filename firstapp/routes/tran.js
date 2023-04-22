@@ -24,8 +24,12 @@ isLoggedIn = (req,res,next) => {
 router.get('/tran/',
   isLoggedIn,
   async (req, res, next) => {
-      res.locals.items = await TranItem.find({userId:req.user._id})
+    if (req.query.sort) {
+      const sortKey = req.query.sort;
+      res.locals.items = await TranItem.find({userId:req.user._id}).sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
       res.render('transactions');
+    }
+    
 });
 
 

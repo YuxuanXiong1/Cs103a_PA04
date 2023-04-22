@@ -2,6 +2,18 @@
   <h1>Transactions for <%= user.googlename %></h1>
   <p>Here is your list of things to do!</p>
 
+  <form method="get" action="/tran">
+    <label for="sort">Sort By:</label>
+    <select name="sort" id="sort">
+      <option value="none">None</option>
+      <option value="description">Description</option>
+      <option value="category">Category</option>
+      <option value="amount">Amount</option>
+      <option value="date">Date</option>
+    </select>
+    <input type="submit" value="Sort">
+  </form>
+
   <table>
     <thead>
       <tr>
@@ -14,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <% items.sort((a, b) => a.category.localeCompare(b.category)).forEach(item => { %>
+      <% items.forEach(item => { %>
         <tr>
           <td><%= item.description %></td>
           <td><%= item.category %></td>
