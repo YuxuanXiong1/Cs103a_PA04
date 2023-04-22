@@ -2,6 +2,10 @@
   <h1>Transactions for <%= user.googlename %></h1>
   <p>Here is your list of things to do!</p>
 
+  <p>
+    <a  class="btn btn-lg btn-primary"
+        href="/tran/byCategory">Group by category</a></p>
+
   <form method="get" action="/tran">
     <label for="sort">Sort By:</label>
     <select name="sort" id="sort">

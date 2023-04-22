@@ -1,0 +1,19 @@
+<h1>Transaction Summary By Category</h1>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Category</th>
+            <th>Total Shu_liang</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% results.forEach(item => {
+            if (item && item._id && item._id.category) { %>
+            <tr>
+               <td> <%= item._id.category %> </td>
+               <td><%= item.total %></td>
+            </tr>
+            <% } %>
+        <% }) %>
+    </tbody>
+</table>

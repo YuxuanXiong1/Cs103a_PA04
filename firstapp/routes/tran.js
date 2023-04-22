@@ -65,6 +65,29 @@ router.get('/tran/remove/:itemId',
       res.redirect('/tran')
 });
 
+router.get('/tran/byCategory',
+  isLoggedIn,
+  async (req, res, next) => {
+    try {
+      const results = await TranItem.aggregate([
+        {
+          $group: {
+            _id: "$category",
+            totalShuLiang: { $sum: "$shu_liang" }
+          }
+        },
+        {
+          $sort: { totalShuLiang: -1 }
+        }
+      ]);
+      
+      res.render('summarizeByCategory', { results });
+    } catch (error) {
+      next(error);
+    }
+  }
+);
+
 
 
 module.exports = router;
