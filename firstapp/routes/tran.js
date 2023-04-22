@@ -27,9 +27,10 @@ router.get('/tran/',
     if (req.query.sort) {
       const sortKey = req.query.sort;
       res.locals.items = await TranItem.find({userId:req.user._id}).sort((a, b) => a[sortKey].localeCompare(b[sortKey]));
-      res.render('transactions');
+    } else {
+      res.locals.items = await TranItem.find({userId:req.user._id})
     }
-    
+    res.render('transactions');
 });
 
 
