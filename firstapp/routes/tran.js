@@ -65,6 +65,29 @@ router.get('/tran/remove/:itemId',
       res.redirect('/tran')
 });
 
+router.get('/tran/edit/:itemId',
+  isLoggedIn,
+  async (req, res, next) => {
+      console.log("inside /tran/edit/:itemId")
+      const item = 
+       await TranItem.findById(req.params.itemId);
+      //res.render('edit', { item });
+      res.locals.item = item
+      res.render('edit')
+      //res.json(item)
+});
+
+router.post('/tran/updateTranItem',
+  isLoggedIn,
+  async (req, res, next) => {
+      const {itemId,item,priority} = req.body;  
+      //console.log("inside /todo/complete/:itemId");
+      await TranItem.findOneAndUpdate(
+        {_id:itemId},
+        {$set: {item,priority}} );
+      res.redirect('/tran')
+});
+
 router.get('/tran/byCategory',
   isLoggedIn,
   async (req, res, next) => {
@@ -80,10 +103,7 @@ router.get('/tran/byCategory',
           $sort: { totalShuLiang: -1 }
         }
       ]);
-      results = 
-           await User.populate(results,
-                   {path:'_id',
-                   select:['category']})
+      
       
       res.render('summarizeByCategory', { results });
     } catch (error) {
