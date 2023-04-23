@@ -92,6 +92,7 @@ router.post('/tran/updateTranItem',
 router.get('/tran/byCategory',
   isLoggedIn,
   async (req, res, next) => {
+    try {
     const userId = new mongoose.Types.ObjectId(req.user._id)
     let results = await TranItem.aggregate([
       {
@@ -108,6 +109,9 @@ router.get('/tran/byCategory',
       }
     ]);
         res.render('summarizeByCatrgory',{results})
+      } catch (error) {
+        next(error);
+      }
 });
 
 
