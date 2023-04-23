@@ -3,7 +3,7 @@
     <thead>
         <tr>
             <th>Category</th>
-            <th>Total Shu_liang</th>
+            <th>total</th>
         </tr>
     </thead>
     <tbody>
@@ -11,7 +11,7 @@
             if (item && item._id && item._id.category) { %>
             <tr>
                <td> <%= item._id.category %> </td>
-               <td><%= item.totalShuLiang %></td>
+               <td><%= item.total %></td>
             </tr>
             <% } %>
         <% }) %>
