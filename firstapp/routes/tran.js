@@ -5,7 +5,9 @@ const express = require('express');
 const router = express.Router();
 const TranItem = require('../models/TranItem')
 const User = require('../models/User')
-
+const mongoose = require( 'mongoose' );
+const Schema = mongoose.Schema;
+const ObjectId = mongoose.Schema.Types.ObjectId;
 
 /*
 this is a very simple server which maintains a key/value
@@ -93,7 +95,7 @@ router.get('/tran/byCategory',
   isLoggedIn,
   async (req, res, next) => {
     try {
-    const userId = new mongoose.Types.ObjectId(req.user._id)
+    const userId = new ObjectId(req.user._id)
     let results = await TranItem.aggregate([
       {
         $match: { userId }
