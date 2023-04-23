@@ -110,7 +110,7 @@ router.get('/tran/byCategory',
         $sort: { totalShuLiang: -1 }
       }
     ]);
-        res.render('summarizeByCatrgory',{results})
+        res.render('summarizeByCategory',{results})
       } catch (error) {
         next(error);
       }
