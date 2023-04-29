@@ -8,12 +8,12 @@
     </thead>
     <tbody>
         <% results.map(item => {
-            if (item && item._id && item._id.category) { %>
+             %>
             <tr>
-               <td> <%= item._id.category %> </td>
+               <td> <%= item._id %> </td>
                <td><%= item.totalShuLiang %></td>
             </tr>
-            <% } %>
+            
         <% }) %>
     </tbody>
 </table>
